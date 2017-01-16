@@ -1,10 +1,10 @@
-function getAndPrintHTMLChunks () {
+function getAndPrintHTML () {
 
  const http = require('https');
 
  var requestOptions = {
    host: 'sytantris.github.io',
-   path: '/http-examples/step1.html'
+   path: '/http-examples/step2.html'
  };
 
  var data = ''
@@ -17,12 +17,12 @@ function getAndPrintHTMLChunks () {
 
   //
   response.on('data', (chunk) => {
-    console.log(chunk + '\n');
+    data += chunk;
   });
 
   //
   response.on('end', () => {
-    // console.log('All data received: \n' + data);
+    console.log('All data received: \n' + data);
 
     console.log('Stream ends');
   });
@@ -31,4 +31,8 @@ function getAndPrintHTMLChunks () {
 
 }
 
-getAndPrintHTMLChunks();
+getAndPrintHTML();
+
+// What kind(s) of variable could you buffer your data with?
+// Is there a preferable type? new Buffer
+// If so, what makes it preferable? cos it could store all resource types from the stream
